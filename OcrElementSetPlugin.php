@@ -4,7 +4,7 @@
  *
  * Creates a file element set for OCR metadata and text.
  *
- * @copyright Daniel Berthereau, 2013
+ * @copyright Daniel Berthereau, 2013-2014
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
  */
 

@@ -5,8 +5,10 @@ OCR Element Set (plugin for Omeka)
 Summary
 -------
 
-This plugin for [Omeka] creates a file element set for the refNum standard and
-adds the metadata that can't be replaced by a Dublin Core element.
+This plugin for [Omeka] creates a file element set to manage OCR data.
+
+It can be used in conjunction with the [refNum Element Set], that manages
+informations about digitalized pages of a document.
 
 
 Installation
@@ -68,14 +70,15 @@ First version of this plugin has been built for [Mines ParisTech].
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2013
+* Copyright Daniel Berthereau, 2013-2014
 
 
-[Omeka]: https://omeka.org "Omeka.org"
-[OcrElementSet issues]: https://github.com/Daniel-KM/OcrElementSet/Issues "GitHub Ocr Element Set"
-[CeCILL v2.1]: http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html "CeCILL v2.1"
+[Omeka]: https://omeka.org
+[refNum Element Set]: https://github.com/Daniel-KM/RefnumElementSet
+[OcrElementSet issues]: https://github.com/Daniel-KM/OcrElementSet/Issues
+[CeCILL v2.1]: http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
 [FSF]: https://www.fsf.org
 [OSI]: http://opensource.org
 [Daniel-KM]: https://github.com/Daniel-KM "Daniel Berthereau"
-[Mines ParisTech]: http://bib.mines-paristech.fr "Mines ParisTech / ENSMP"
+[Mines ParisTech]: http://bib.mines-paristech.fr
