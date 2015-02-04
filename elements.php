@@ -76,14 +76,25 @@ $elements = array(
     // - complet :
     //   toute la chaine originale en JSON
     // - medium :
-    //   {"String":{"0":{"id":"PAG_1_ST000001","cc":"10489","content":"Omeka","height":27,"hpos":306,"vpos":307,"width":62}}}
+    //   {"String":{"0":{"id":"PAG_1_ST000001","cc":"184","content":"Ome","subs-content":"Omeka","height":27,"hpos":306,"vpos":307,"width":62}}}
     // - simple :
-    //   {"String":{"0":{"q":"10489","c":"Omeka","h":27,"x":306,"y":307,"w":62}}}'
-    // - très simple, ecommandé pour diminuer la mémoire, surtout pour les gros
-    //   documents (attention à l'ordre des données : contenu, x, y, w, h, q) :
-    //   {"String":{"0":["Omeka",306,307,62,27,10489]}}
+    //   {"String":{"0":{"q":"184","c":"Ome","s":"Omeka","h":27,"x":306,"y":307,"w":62}}}'
+    // - court, recommandé pour diminuer la mémoire, surtout pour les gros
+    //   documents (attention à l'ordre des données : contenu, x, y, w, h, qualité, sous-contenu) :
+    //   {"String":{"0":["Ome",306,307,62,27,"184","Omeka"]}}
     // Les valeurs sont ceux de la norme Alto et peuvent être répétées.
     // Les outils doivent être adaptés au format choisi (import et affichage).
+    //
+    // La qualité est appréciée par lettre du contenu, de 0 (certitude) à 9 (erreur).
+    // Le sous-contenu est le mot dont le contenu est une partie.
+    //
+    // Il est conseillé d'utiliser ce champ uniquement de manière transitoire,
+    // en particulier seulement pour la phase d'import (XmlImport et CsvImport
+    // permettent d'importer uniquement des éléments standards), car sinon,
+    // ces éléments seront dupliqués dans la table de recherche des textes,
+    // ce qui est inutile et peut doubler la taille de la base.
+    // Le plugin Bibnum contient les outils standards nécessaires pour déplacer
+    // et récupérer ces données.
     array(
         // 'name' => 'motAMot,
         'name' => 'Mot-à-mot',
