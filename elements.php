@@ -27,13 +27,17 @@ $elements = array(
             ["-",368,307,18,27,"1"],
             ["ga",130,343,45,27,"10"]
         ]],
+        "4':"EOL",
         "6":["3",175,343,22,27,"1"],
-        "7":["!",197,343,12,27,"1"]
+        "7":["!",197,343,12,27,"1"],
+        "8":"EOL"
     }}
     */
     // This array is the words "Omega 3!" cut at the end of a line "Ome- ga 3!".
     // The matching one line text is "Omega 3!". The position of the word "3"
-    // is determined directly (6th character, starting from 0).
+    // is determined directly (6th character, starting from 0). The "EOL"
+    // indicates the end of line, so either the original or the reflowed text
+    // can be rebuilt if needed. It is optional, but may be useful.
     //
     // Deprecated version:
     /*
