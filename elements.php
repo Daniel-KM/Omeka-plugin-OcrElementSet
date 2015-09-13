@@ -5,102 +5,66 @@ $elementSetMetadata = array(
     'record_type' => 'File',
 );
 
-// Attention : contrairement à DublinCore Extended, on utilise réellement les
-// noms et non les labels.
+// Note: only labels are used.
 $elements = array(
-    // Statistiques.
     array(
-        // 'name' => 'totalNC',
-        'name' => 'Total NC',
-        'label' => 'Total NC',
-        'record_type' => 'File',
-        'data_type' => 'Integer',
-        'description' => 'Statistique : total NC',
-    ),
-    array(
-        // 'name' => 'totalNCDico',
-        'name' => 'Total NC dictionnaire',
-        'label' => 'Total NC dictionnaire',
-        'record_type' => 'File',
-        'data_type' => 'Integer',
-        'description' => 'Statistique : total NC dictionnaire',
-    ),
-    array(
-        //'name' => 'tauxNC',
-        'name' => 'Taux NC',
-        'label' => 'Taux NC',
-        'record_type' => 'File',
-        'data_type' => 'Integer',
-        'description' => 'Statistique : taux NC',
-    ),
-    array(
-        // 'name' => 'totalCaracteres',
-        'name' => 'Nombre de caractères',
-        'label' => 'Nombre de caractères',
-        'record_type' => 'File',
-        'data_type' => 'Integer',
-        'description' => 'Nombre de caractères',
-    ),
-    array(
-        // 'name' => 'totalDouteux',
-        'name' => 'Total caractères douteux',
-        'label' => 'Total caractères douteux',
-        'record_type' => 'File',
-        'data_type' => 'Integer',
-        'description' => 'Statistique : total des caractères douteux',
-    ),
-    array(
-        // 'name' => 'tauxDouteux',
-        'name' => 'Taux caractères douteux',
-        'label' => 'Taux caractères douteux',
-        'record_type' => 'File',
-        'data_type' => 'Integer',
-        'description' => 'Statistique : taux des caractères douteux',
-    ),
-    // Correspond au champ de notice par défaut "text", mais ici au niveau de
-    // chaque fichier.
-    array(
-        // 'name' => 'texteAuto',
-        'name' => 'Texte auto',
-        'label' => 'Texte auto',
+        'name' => 'Text',
+        'label' => 'Text',
+        'old label' => 'Texte auto',
         'record_type' => 'File',
         'data_type' => 'Text',
-        'description' => 'Transcription automatique du texte',
+        'description' => 'Text from the optical character recognition.',
     ),
-    // Transcription OCR au format JSON.
-    // Ce champ est un intermédiaire entre la transcription brute et le fichier
-    // XML complet. Il permet de traiter facilement le surlignage en javascript.
-    // Le champ contient uniquement le texte et sa position, sous la forme :
-    // "position d'une chaîne dans le texte" => "données à cette position".
-    // Le format des données peut-être de plusieurs types :
-    // - complet :
-    //   toute la chaine originale en JSON
-    // - medium :
-    //   {"String":{"0":{"id":"PAG_1_ST000001","cc":"184","content":"Ome","subs-content":"Omeka","height":27,"hpos":306,"vpos":307,"width":62}}}
-    // - simple :
-    //   {"String":{"0":{"q":"184","c":"Ome","s":"Omeka","h":27,"x":306,"y":307,"w":62}}}'
-    // - court, recommandé pour diminuer la mémoire, surtout pour les gros
-    //   documents (attention à l'ordre des données : contenu, x, y, w, h, qualité, sous-contenu) :
-    //   {"String":{"0":["Ome",306,307,62,27,"184","Omeka"]}}
-    // Les valeurs sont ceux de la norme Alto et peuvent être répétées.
-    // Les outils doivent être adaptés au format choisi (import et affichage).
+    // Data in json for advanced processing (search, highlight, correction...).
+    // The value is an array of each string, with its position (starting from 0,
+    // and with count of spaces, as in the one line text), and an array for
+    // content, position x, y, width, height, and eventually the quality (by
+    // character). It the content is hyphenated, the values are in sub-arrays.
+    /*
+    {"String":{
+        "0":["Omega",[
+            ["Ome", 306,307,62,27,"010"],
+            ["-",368,307,18,27,"1"],
+            ["ga",130,343,45,27,"10"]
+        ]],
+        "6":["3",175,343,22,27,"1"],
+        "7":["!",197,343,12,27,"1"]
+    }}
+    */
+    // This array is the words "Omega 3!" cut at the end of a line "Ome- ga 3!".
+    // The matching one line text is "Omega 3!". The position of the word "3"
+    // is determined directly (6th character, starting from 0).
     //
-    // La qualité est appréciée par lettre du contenu, de 0 (certitude) à 9 (erreur).
-    // Le sous-contenu est le mot dont le contenu est une partie.
+    // Deprecated version:
+    /*
+    {"String":{
+        "0":["Ome",306,307,62,27,"010","Omega"],
+        "3":["-",368,307,18,27,"1"],
+        "5":["ga",130,343,45,27,"10","Omega"],
+        "8":["3",175,343,22,27,"1"],
+        "9":["!",197,343,12,27,"1"]
+    }}
+    */
+    // This array is the words "Omega 3!" cut at the end of a line "Ome- ga 3!".
+    // The matching one line text is "Omega 3!". The position of the word "3"
+    // is determined directly (8th character, starting from 0, minus one hyphen
+    // and its following space).
     //
-    // Il est conseillé d'utiliser ce champ uniquement de manière transitoire,
-    // en particulier seulement pour la phase d'import (XmlImport et CsvImport
-    // permettent d'importer uniquement des éléments standards), car sinon,
-    // ces éléments seront dupliqués dans la table de recherche des textes,
-    // ce qui est inutile et peut doubler la taille de la base.
-    // Le plugin Bibnum contient les outils standards nécessaires pour déplacer
-    // et récupérer ces données.
+    // Warning: Data can be heavy and they are duplicated by default in the
+    // search table of the base.
     array(
-        // 'name' => 'motAMot,
-        'name' => 'Mot-à-mot',
-        'label' => 'Mot-à-mot',
+        'name' => 'Data',
+        'label' => 'Data',
+        'old label' => 'Mot-à-mot',
         'record_type' => 'File',
         'data_type' => 'Text',
-        'description' => 'Transcription brute du texte au format JSON, indiquant la position de chaque mot dans l’image',
+        'description' => 'Detailled OCR in json for advanced processing (highlight, correction...).',
+    ),
+    array(
+        'name' => 'Process',
+        'label' => 'Process',
+        'record_type' => 'File',
+        'data_type' => 'String',
+        'description' => 'Data about the OCR process (creator, software, statistic...).',
     ),
 );
