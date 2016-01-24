@@ -65,6 +65,16 @@ class OcrElementSetPlugin extends Omeka_Plugin_AbstractPlugin
         if (version_compare($oldVersion, '2.3', '<')) {
             $this->_upgradeElements();
         }
+
+        if (version_compare($oldVersion, '2.4', '<')) {
+            // Change OCR Data to the new json format of OCR.
+            Zend_Registry::get('bootstrap')->getResource('jobs')->sendLongRunning('OcrElementSet_UpgradeOcr');
+            $flash = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
+            $flash->addMessage(__('If no error appears, the upgrade of OCR Data is in progress.'));
+            $flash->addMessage(__('If an error occurs, the upgrade should be redone until all data are updated and the message of end upgrade in the log.'));
+
+            $flash->addMessage(__('You should reindex your records when the upgrade process will be finished (click Parameters > Search > Index records).'));
+        }
     }
 
     /**

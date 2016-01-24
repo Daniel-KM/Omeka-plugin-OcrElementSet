@@ -2,13 +2,9 @@ OCR Element Set (plugin for Omeka)
 ==================================
 
 
-Summary
--------
-
 This plugin for [Omeka] creates a file element set to manage OCR data.
 
-It can be used in conjunction with the [refNum Element Set], that manages
-informations about digitalized pages of a document.
+It can be used in conjunction with [Scripto] to save the transcribed text.
 
 
 Installation
@@ -17,6 +13,12 @@ Installation
 Uncompress files and rename plugin folder "OcrElementSet".
 
 Then install it like any other Omeka plugin. The plugin has no configuration.
+
+*Important*
+
+Data can be heavy and they are duplicated by default in the search table of the
+base. So it is recommended to install the [fork of Hide Elements] to hide them
+from the indexation (just check all boxes for the row "OCR:Data").
 
 
 Warning
@@ -70,11 +72,12 @@ First version of this plugin has been built for [Mines ParisTech].
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2013-2015
+* Copyright Daniel Berthereau, 2013-2016
 
 
 [Omeka]: https://omeka.org
-[refNum Element Set]: https://github.com/Daniel-KM/RefnumElementSet
+[Scripto]: https://github.com/Omeka/plugin-Scripto
+[fork of Hide Elements]: https://github.com/Daniel-KM/HideElements
 [OcrElementSet issues]: https://github.com/Daniel-KM/OcrElementSet/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
