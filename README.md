@@ -4,7 +4,8 @@ OCR Element Set (plugin for Omeka)
 
 This plugin for [Omeka] creates a file element set to manage OCR data.
 
-It can be used in conjunction with [Scripto] to save the transcribed text.
+It can be used in conjunction with [Scripto] to save the transcribed text, or
+with [Archive Folder] to import [Mets] and [Alto] xml files.
 
 
 Installation
@@ -77,6 +78,9 @@ Copyright
 
 [Omeka]: https://omeka.org
 [Scripto]: https://github.com/Omeka/plugin-Scripto
+[Archive Folder]: https://github.com/Daniel-KM/ArchiveFolder
+[Mets]: https://www.loc.gov/standards/mets
+[Alto]: https://www.loc.gov/standards/alto
 [fork of Hide Elements]: https://github.com/Daniel-KM/HideElements
 [OcrElementSet issues]: https://github.com/Daniel-KM/OcrElementSet/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
