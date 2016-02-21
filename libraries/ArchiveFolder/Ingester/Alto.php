@@ -74,7 +74,7 @@ class ArchiveFolder_Ingester_Alto extends ArchiveFolder_Ingester_Abstract
         $metadata = array();
 
         // Extract the text via the stylesheet.
-        if ($this->_getParameter('fill_ocr_text')) {
+        if ($this->_getParameter('ocr_fill_text')) {
             // Process the xml file via the stylesheet.
             $textPath = $this->_processXslt->processXslt($filepath, $this->_xslOcrText);
             if (filesize($textPath) > 0) {
@@ -83,7 +83,7 @@ class ArchiveFolder_Ingester_Alto extends ArchiveFolder_Ingester_Abstract
         }
 
         // Extract the data via the stylesheet.
-        if ($this->_getParameter('fill_ocr_data')) {
+        if ($this->_getParameter('ocr_fill_data')) {
             // Process the xml file via the stylesheet.
             $dataPath = $this->_processXslt->processXslt($filepath, $this->_xslOcrData);
             if (filesize($dataPath) > 0) {
@@ -92,7 +92,7 @@ class ArchiveFolder_Ingester_Alto extends ArchiveFolder_Ingester_Abstract
         }
 
         // Extract the process via the stylesheet.
-        if ($this->_getParameter('fill_ocr_process')) {
+        if ($this->_getParameter('ocr_fill_process')) {
             // Process the xml file via the stylesheet.
             $processPath = $this->_processXslt->processXslt($filepath, $this->_xslOcrProcess);
             if (filesize($processPath) > 0) {
