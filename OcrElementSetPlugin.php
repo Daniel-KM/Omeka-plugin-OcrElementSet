@@ -27,6 +27,13 @@ class OcrElementSetPlugin extends Omeka_Plugin_AbstractPlugin
     );
 
     /**
+     * @var array Filters for the plugin.
+     */
+    protected $_filters = array(
+        'archive_folder_add_parameters',
+    );
+
+    /**
      * Installs the plugin.
      */
     public function hookInstall()
@@ -224,5 +231,47 @@ class OcrElementSetPlugin extends Omeka_Plugin_AbstractPlugin
             }
             $elementSet->delete();
         }
+    }
+
+    /**
+     * Add parameters to the main form.
+     *
+     * @param ArchiveFolder_Form_Add $form
+     * @return $form
+     */
+    public function filterArchiveFolderAddParameters($form)
+    {
+        $form->addElement('checkbox', 'fill_ocr_text', array(
+            'label' => __('Fill OCR Text'),
+            'description' => __('If Alto xml files are imported via Mets, fill the field "OCR : Text" too.'),
+            'value' => true,
+        ));
+        $form->addElement('checkbox', 'fill_ocr_data', array(
+            'label' => __('Fill OCR Data'),
+            'description' => __('If Alto xml files are imported via Mets, fill the field "OCR : Data" too.')
+                . ' ' . __('This field is needed only if it is reused somewhere else (highlight, correction, search...).')
+                . ' ' . __('Warning: Data can be heavy and they are duplicated by default in the search table of the base.'),
+            'value' => true,
+        ));
+        $form->addElement('checkbox', 'fill_ocr_process', array(
+            'label' => __('Fill OCR Process'),
+            'description' => __('If Alto xml files are imported via Mets, fill the field "OCR : Process" too.')
+                . ' ' . __('These values are useless for end user.'),
+            'value' => true,
+        ));
+
+        $form->addDisplayGroup(
+            array(
+                'fill_ocr_text',
+                'fill_ocr_data',
+                'fill_ocr_process',
+            ),
+            'archive_folder_ocr',
+            array(
+                'legend' => __('OCR'),
+                'description' => __('Set specific parameters for OCR.'),
+        ));
+
+        return $form;
     }
 }
