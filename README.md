@@ -15,6 +15,11 @@ Uncompress files and rename plugin folder "OcrElementSet".
 
 Then install it like any other Omeka plugin. The plugin has no configuration.
 
+* Note
+
+The default namespace of xsl stylesheets is "http://bibnum.bnf.fr/ns/alto_prod",
+used by the [Bibliothèque nationale de France]. Change it if needed.
+
 *Important*
 
 Data can be heavy and they are duplicated by default in the search table of the
@@ -82,6 +87,7 @@ Copyright
 [Mets]: https://www.loc.gov/standards/mets
 [Alto]: https://www.loc.gov/standards/alto
 [fork of Hide Elements]: https://github.com/Daniel-KM/HideElements
+[Bibliothèque nationale de France]: http://bnf.fr
 [OcrElementSet issues]: https://github.com/Daniel-KM/OcrElementSet/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
