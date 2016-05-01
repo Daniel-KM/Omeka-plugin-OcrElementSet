@@ -26,14 +26,13 @@ class ArchiveFolder_Ingester_Alto extends ArchiveFolder_Ingester_Abstract
 
     public function __construct($uri, $parameters)
     {
-        $this->_xslOcrText = PLUGIN_DIR
-            . DIRECTORY_SEPARATOR . 'ArchiveFolder'
+        $base = PLUGIN_DIR
+            . DIRECTORY_SEPARATOR . 'OcrElementSet';
+        $this->_xslOcrText = $base
             . DIRECTORY_SEPARATOR . $this->_xslOcrText;
-        $this->_xslOcrData = PLUGIN_DIR
-            . DIRECTORY_SEPARATOR . 'ArchiveFolder'
+        $this->_xslOcrData = $base
             . DIRECTORY_SEPARATOR . $this->_xslOcrData;
-        $this->_xslOcrProcess = PLUGIN_DIR
-            . DIRECTORY_SEPARATOR . 'ArchiveFolder'
+        $this->_xslOcrProcess = $base
             . DIRECTORY_SEPARATOR . $this->_xslOcrProcess;
 
         parent::__construct($uri, $parameters);
