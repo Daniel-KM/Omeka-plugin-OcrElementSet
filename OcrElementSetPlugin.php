@@ -30,6 +30,7 @@ class OcrElementSetPlugin extends Omeka_Plugin_AbstractPlugin
      * @var array Filters for the plugin.
      */
     protected $_filters = array(
+        'archive_folder_ingesters',
         'archive_folder_add_parameters',
     );
 
@@ -231,6 +232,25 @@ class OcrElementSetPlugin extends Omeka_Plugin_AbstractPlugin
             }
             $elementSet->delete();
         }
+    }
+
+    /**
+     * Add the ingesters for associated files that are available.
+     *
+     * @internal The prefix is a value to allow multiple ways to format data.
+     *
+     * @param array $ingesters Ingesters array.
+     * @return array Filtered Ingesters array.
+     */
+    public function filterArchiveFolderIngesters($ingesters)
+    {
+        $ingesters['alto'] = array(
+            'prefix' => 'alto',
+            'class' => 'ArchiveFolder_Ingester_Alto',
+            'description' => __('Alto xml files for OCR'),
+        );
+
+        return $ingesters;
     }
 
     /**
