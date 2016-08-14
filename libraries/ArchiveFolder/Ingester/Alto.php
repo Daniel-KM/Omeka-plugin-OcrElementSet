@@ -16,6 +16,7 @@ class ArchiveFolder_Ingester_Alto extends ArchiveFolder_Ingester_Abstract
     protected $_formatXml = self::XML_PREFIX;
     protected $_xmlRoot = self::XML_ROOT;
     protected $_xmlNamespace = self::XML_NAMESPACE;
+    protected $_xmlPrefix = self::XML_PREFIX;
 
     // Current doc for internal purposes.
     protected $_doc;
@@ -55,6 +56,7 @@ class ArchiveFolder_Ingester_Alto extends ArchiveFolder_Ingester_Abstract
                     'extension' => $this->_extension,
                     'xmlRoot' => $this->_xmlRoot,
                     'xmlNamespace' => $this->_xmlNamespace,
+                    'xmlPrefix' => $this->_xmlPrefix,
             ))) {
             return array();
         }
