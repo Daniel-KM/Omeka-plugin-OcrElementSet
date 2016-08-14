@@ -21,9 +21,9 @@ class ArchiveFolder_Ingester_Alto extends ArchiveFolder_Ingester_Abstract
     // Current doc for internal purposes.
     protected $_doc;
 
-    protected $_xslOcrText = 'libraries/ArchiveFolder/Ingester/alto2text.xsl';
-    protected $_xslOcrData = 'libraries/ArchiveFolder/Ingester/alto2json.xsl';
-    protected $_xslOcrProcess = 'libraries/ArchiveFolder/Ingester/alto2process.xsl';
+    protected $_xslOcrText = 'libraries/xsl/alto2text.xsl';
+    protected $_xslOcrData = 'libraries/xsl/alto2json.xsl';
+    protected $_xslOcrProcess = 'libraries/xsl/alto2process.xsl';
 
     public function __construct($uri, $parameters)
     {
