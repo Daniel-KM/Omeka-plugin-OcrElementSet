@@ -32,6 +32,7 @@ class OcrElementSetPlugin extends Omeka_Plugin_AbstractPlugin
     protected $_filters = array(
         'archive_folder_ingesters',
         'archive_folder_add_parameters',
+        'oai_pmh_static_repository_add_parameters',
     );
 
     /**
@@ -260,6 +261,28 @@ class OcrElementSetPlugin extends Omeka_Plugin_AbstractPlugin
      * @return $form
      */
     public function filterArchiveFolderAddParameters($form)
+    {
+        return $this->_addParametersToForm($form);
+    }
+
+    /**
+     * Add parameters to the main form.
+     *
+     * @param OaiPmhStaticRepository_Form_Add $form
+     * @return $form
+     */
+    public function filterOaiPmhStaticRepositoryAddParameters($form)
+    {
+        return $this->_addParametersToForm($form);
+    }
+
+    /**
+     * Add parameters to the main form.
+     *
+     * @param ArchiveFolder_Form_Add $form
+     * @return $form
+     */
+    protected function _addParametersToForm($form)
     {
         $form->addElement('checkbox', 'ocr_fill_text', array(
             'label' => __('Fill OCR Text'),
