@@ -84,13 +84,13 @@ Copyright
 
 [Omeka]: https://omeka.org
 [Scripto]: https://github.com/Omeka/plugin-Scripto
-[Archive Folder]: https://github.com/Daniel-KM/ArchiveFolder
-[OAI-PMH Static Repository]: https://github.com/Daniel-KM/OaiPmhStaticRepository
+[Archive Folder]: https://github.com/Daniel-KM/Omeka-plugin-ArchiveFolder
+[OAI-PMH Static Repository]: https://github.com/Daniel-KM/Omeka-plugin-OaiPmhStaticRepository
 [Mets]: https://www.loc.gov/standards/mets
 [Alto]: https://www.loc.gov/standards/alto
-[fork of Hide Elements]: https://github.com/Daniel-KM/HideElements
+[fork of Hide Elements]: https://github.com/Daniel-KM/Omeka-plugin-HideElements
 [Bibliothèque nationale de France]: http://bnf.fr
-[OcrElementSet issues]: https://github.com/Daniel-KM/OcrElementSet/issues
+[OcrElementSet issues]: https://github.com/Daniel-KM/Omeka-plugin-OcrElementSet/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
 [FSF]: https://www.fsf.org
